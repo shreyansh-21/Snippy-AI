@@ -9,7 +9,7 @@ export default function Home() {
       <h1 className="font-bold text-5xl">Home</h1>
       {/* Method 1: Container with overflow hidden to crop watermark */}
       <div className="relative overflow-hidden h-95 w-full">
-        <div className="absolute inset-0 -bottom-12">
+        <div className="absolute inset-0 -bottom-15">
           <Spline scene="https://prod.spline.design/i0W2W9FWUxNNuEHv/scene.splinecode"/>
         </div>
       </div>

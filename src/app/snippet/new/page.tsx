@@ -9,7 +9,7 @@ function page() {
     return (
         <div>
             <div className="relative overflow-hidden h-95 w-full">
-                <div className="absolute inset-0 -bottom-12">
+                <div className="absolute inset-0 -bottom-15">
                     <Spline scene="https://prod.spline.design/i0W2W9FWUxNNuEHv/scene.splinecode" />
                 </div>
             </div>
