@@ -21,7 +21,6 @@ const SnippetDetailPage = async( {params}:{params:Promise<{id:string}>} ) => {
 
 return (
   <div className="p-8">
-    {/* Heading */}
     <h1 className="text-3xl underline font-bold mb-6">{snippet?.title}</h1>
 
     {/* Row: Spline left, buttons right */}
@@ -29,13 +28,13 @@ return (
       
       {/* Spline Model with watermark hidden */}
       <div className="relative w-1/3 h-64 overflow-hidden">
-        <div className="absolute inset-0 bottom-[-56px]"> 
           {/* Negative bottom to push watermark out of view */}
+        <div className="absolute inset-0 bottom-[-56px]"> 
           <Spline scene="https://prod.spline.design/i0W2W9FWUxNNuEHv/scene.splinecode" />
         </div>
       </div>
 
-      {/* Buttons */}
+
       <div className="flex gap-4">
         <Link href={`/snippet/${snippet.id}/edit`}><Button className="font-bold shadow-lg transition hover:scale-95">Edit</Button></Link>
         <form action="deleteSnippetction"><Button className="bg-red-500 font-bold shadow-lg transition hover:scale-95 hover:bg-red-300">Delete</Button></form>

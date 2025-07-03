@@ -9,18 +9,31 @@ import { redirect } from 'next/navigation'
 
 function CreateSnippetPage() {
 
-    async function createsnipprt(formData:FormData) {
+    async function createsnipprt(formData: FormData) {
         'use server'
         const title = formData.get('title') as string;
         const code = formData.get('textarea') as string;
+
+        const data: any = {};
+
+        if (title && title.trim() !== '') {
+            data.title = title;}
+
+        if (code && code.trim() !== '') {
+            data.code = code;}
+
+        // Only create if there's at least one field
+        if (Object.keys(data).length === 0) {
+            throw new Error('No fields to save');
+        }
+
         await prisma.snippet.create({
-            data: {
-                title: title,
-                code: code
-            }
-        })
-        redirect('/')
+            data: data,
+        });
+
+        redirect('/');
     }
+
 
 
     return (
@@ -34,7 +47,7 @@ function CreateSnippetPage() {
             <form action={createsnipprt}>
                 <div className='p-6'>
                     <Label className='p-2 font-bold text-xl' >Title</Label>
-                    <Input type='text' name='title' id='title' className='shadow-xl' />
+                    <Input type='text' name='title' id='title' className='shadow-xl' required/>
                 </div>
                 <div className='p-6'>
                     <Label className='p-2 font-bold text-xl'>Code</Label>
