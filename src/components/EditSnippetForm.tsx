@@ -5,15 +5,14 @@ import type { Snippet } from "@prisma/client";
 import { Button } from "./ui/button";
 // import { saveSnippet } from "@/actions";
 
-
 const EditSnippetForm = ({ snippet }: { snippet: Snippet }) => {
   const [code, setCode] = useState(snippet.code);
 
-  const changeEvenHandler = (value:string = "") => {
+  const changeEvenHandler = (value: string = "") => {
     setCode(value);
-  }
+  };
 
-  // you can't use server action as a inline inside client component
+  // you can't use server action as an inline inside a client component
   //   async function saveSnippet () {
   //     "use server"
 
@@ -22,19 +21,31 @@ const EditSnippetForm = ({ snippet }: { snippet: Snippet }) => {
   // const saveSnippetAction = saveSnippet.bind(null, snippet.id, code);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-6 p-6 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-lg">
+      {/* Form to handle saving the snippet */}
       {/* <form action={saveSnippetAction} className="flex items-center justify-between"> */}
-      <form className="flex items-center justify-between">
-        <h1 className="font-bold text-xl">Your Code Editor:</h1>
-        <Button type="submit">Save</Button>
+      <form className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <h1 className="font-bold text-2xl text-white">Your Code Editor:</h1>
+        <Button type="submit" className="w-full sm:w-auto">
+          Save
+        </Button>
       </form>
-      <Editor
-        height="40vh"
-        theme="vs-dark"
-        defaultLanguage="javascript"
-        defaultValue={code}
-        onChange={changeEvenHandler}
-      />
+
+      {/* Monaco Editor wrapped with styling */}
+      <div className="rounded-lg overflow-hidden border border-zinc-700">
+        <Editor
+          height="70vh"
+          theme="vs-dark"
+          defaultLanguage="python"
+          defaultValue={code}
+          onChange={changeEvenHandler}
+          options={{
+            minimap: { enabled: false },
+            fontSize: 14,
+            scrollBeyondLastLine: false,
+          }}
+        />
+      </div>
     </div>
   );
 };
