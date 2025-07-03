@@ -17,8 +17,8 @@ const SnippetDetailPage = async( {params}:{params:Promise<{id:string}>} ) => {
   return (
     <div>
       <h1>{snippet?.title}</h1>
-      <Button className='w-md font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>Edit</Button>
-      <Button className='w-md font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>Delete</Button>
+      <Button className='font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>Edit</Button>
+      <Button className='font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>Delete</Button>
     </div>
   )
 }
