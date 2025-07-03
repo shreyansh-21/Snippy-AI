@@ -23,8 +23,7 @@ const EditSnippetForm = ({ snippet }: { snippet: Snippet }) => {
   return (
     <div className="flex flex-col gap-6 p-6 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-lg">
       {/* Form to handle saving the snippet */}
-      {/* <form action={saveSnippetAction} className="flex items-center justify-between"> */}
-      <form className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <form action={saveSnippetAction} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="font-bold text-2xl text-white">Your Code Editor:</h1>
         <Button type="submit" className="w-full sm:w-auto">
           Save
