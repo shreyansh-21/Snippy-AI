@@ -55,7 +55,7 @@ function CreateSnippetPage() {
                     <Textarea name='textarea' id='textarea' className='shadow-xl' />
                 </div>
                 <div className='flex justify-center p-12'>
-                    <Button type='submit' className='w-md font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>New</Button>
+                    <Button type='submit' className='w-md font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120'>Create</Button>
                 </div>
             </form>
         </div>
