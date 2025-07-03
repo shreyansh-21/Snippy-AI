@@ -1,4 +1,4 @@
-<h1 align="center">🤖 Snippy — Your Friendly Code Snippet Sidekick</h1>
+<h1 align="center">Snippy — Your Friendly Code Snippet Sidekick</h1>
 
 <p align="center">
   <img src="public/robo-cube.gif" alt="Snippy 3D Bot" width="250" />
