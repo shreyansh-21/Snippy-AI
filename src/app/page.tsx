@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Spline from '@splinetool/react-spline/next';
+import { prisma } from "@/lib/prisma";
 
-export default function Home() {
+export default async function Home() {
+  const snippets = await prisma.snippet.findMany();//array of objects hai
   return (
     <div>
       <h1 className="font-bold text-5xl">Home</h1>
@@ -14,7 +16,6 @@ export default function Home() {
       </div>
 
 
-
       <div className="flex items-center justify-between my-7">
         <h1 className="text-2xl font-bold">Snippets</h1>
         <Link href={"/snippet/new"}> 
@@ -23,6 +24,15 @@ export default function Home() {
           </Button> 
         </Link>
       </div>
+
+      {
+        snippets.map((snippet:any)=>(
+          <div>
+            <h1>{snippet.title}</h1>
+            <Link href={`/snippet/${snippet.id}`} ><Button>View</Button></Link>
+          </div>
+        ))
+      }
     </div>
   );
 }
