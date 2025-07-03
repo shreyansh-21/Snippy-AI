@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { prisma } from '@/lib/prisma';
 import Spline from '@splinetool/react-spline/next';
+import Link from 'next/link';
 import { title } from 'process';
 import React from 'react'
 
@@ -33,7 +34,7 @@ return (
 
       {/* Buttons */}
       <div className="flex gap-4">
-        <Button className="font-bold shadow-lg transition hover:scale-95">Edit</Button>
+        <Link href={`/snippet/${snippet.id}/edit`}><Button className="font-bold shadow-lg transition hover:scale-95">Edit</Button></Link>
         <Button className="bg-red-500 font-bold shadow-lg transition hover:scale-95 hover:bg-red-300">Delete</Button>
       </div>
     </div>
