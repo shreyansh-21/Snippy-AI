@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import { prisma } from '@/lib/prisma';
 import Spline from '@splinetool/react-spline/next';
 import Link from 'next/link';
-import { title } from 'process';
 import React from 'react'
 import * as actions from '@/actions/index';
 

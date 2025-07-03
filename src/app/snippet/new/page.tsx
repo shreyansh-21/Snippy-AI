@@ -6,26 +6,27 @@ import React from 'react'
 import Spline from '@splinetool/react-spline/next';
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
+import { Prisma } from '@prisma/client';
 
 function CreateSnippetPage() {
 
     async function createsnipprt(formData: FormData) {
-        'use server'
+        'use server';
         const title = formData.get('title') as string;
         const code = formData.get('textarea') as string;
 
-        const data: any = {};
-
-        if (title && title.trim() !== '') {
-            data.title = title;}
-
-        if (code && code.trim() !== '') {
-            data.code = code;}
-
-        // Only create if there's at least one field
-        if (Object.keys(data).length === 0) {
-            throw new Error('No fields to save');
+        if (!title || title.trim() === '') {
+            throw new Error('Title is required.');
         }
+
+        if (!code || code.trim() === '') {
+            throw new Error('Code is required.');
+        }
+
+        const data: Prisma.SnippetCreateInput = {
+            title: title.trim(),
+            code: code.trim(),
+        };
 
         await prisma.snippet.create({
             data: data,
@@ -47,7 +48,7 @@ function CreateSnippetPage() {
             <form action={createsnipprt}>
                 <div className='p-6'>
                     <Label className='p-2 font-bold text-xl' >Title</Label>
-                    <Input type='text' name='title' id='title' className='shadow-xl' required/>
+                    <Input type='text' name='title' id='title' className='shadow-xl' required />
                 </div>
                 <div className='p-6'>
                     <Label className='p-2 font-bold text-xl'>Code</Label>
