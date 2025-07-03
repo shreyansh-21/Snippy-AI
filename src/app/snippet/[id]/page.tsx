@@ -16,7 +16,7 @@ const SnippetDetailPage = async( {params}:{params:Promise<{id:string}>} ) => {
     if(!snippet) {
         return <div className='p-4 text-align-centre text-red-500'>Snippet not found</div>}
     
-    const deleteSnippetction = actions.deleteSnippet.bind(null, id);
+    const deleteSnippetaction = actions.deleteSnippet.bind(null, id);
 
 return (
   <div className="p-8">
@@ -36,7 +36,7 @@ return (
 
       <div className="flex gap-4">
         <Link href={`/snippet/${snippet.id}/edit`}><Button className="font-bold shadow-lg transition hover:scale-95">Edit</Button></Link>
-        <form action="deleteSnippetction"><Button className="bg-red-500 font-bold shadow-lg transition hover:scale-95 hover:bg-red-300">Delete</Button></form>
+        <form action={deleteSnippetaction}><Button className="bg-red-500 font-bold shadow-lg transition hover:scale-95 hover:bg-red-300">Delete</Button></form>
       </div>
     </div>
          <div>
