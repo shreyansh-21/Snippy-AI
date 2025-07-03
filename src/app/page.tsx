@@ -19,7 +19,7 @@ export default async function Home() {
       <div className="flex items-center justify-between my-7">
         <h1 className="text-2xl font-bold">Snippets</h1>
         <Link href={"/snippet/new"}> 
-          <Button className="w-sm font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-120">
+          <Button className="w-sm font-bold font-stretch-expanded shadow-lg transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-90">
             New
           </Button> 
         </Link>
@@ -27,9 +27,9 @@ export default async function Home() {
 
       {
         snippets.map((snippet:any)=>(
-          <div>
-            <h1>{snippet.title}</h1>
-            <Link href={`/snippet/${snippet.id}`} ><Button>View</Button></Link>
+          <div key={snippet.id} className="flex items-center justify-between p-4 my-2 bg-gray-100 rounded-lg shadow-md">
+            <h1 className="font-medium">{snippet.title}</h1>
+            <Link href={`/snippet/${snippet.id}`} ><Button className="transition delay-150 duration-300 ease-in-out hover:scale-90">View</Button></Link>
           </div>
         ))
       }
