@@ -1,5 +1,5 @@
 "use client";
-import { Editor } from "@monaco-editor/react";
+import MonacoEditor from "./MonacoWrapper"; // ✅ use your dynamic version!
 import React, { useState } from "react";
 import type { Snippet } from "@prisma/client";
 import { Button } from "./ui/button";
@@ -12,17 +12,10 @@ const EditSnippetForm = ({ snippet }: { snippet: Snippet }) => {
     setCode(value);
   };
 
-  // you can't use server action as an inline inside a client component
-  //   async function saveSnippet () {
-  //     "use server"
-
-  //   }
-
   const saveSnippetAction = saveSnippet.bind(null, snippet.id, code);
 
   return (
     <div className="flex flex-col gap-6 p-6 bg-zinc-900 border border-zinc-700 rounded-2xl shadow-lg">
-      {/* Form to handle saving the snippet */}
       <form action={saveSnippetAction} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <h1 className="font-bold text-2xl text-white">Your Code Editor:</h1>
         <Button type="submit" className="w-full sm:w-auto">
@@ -30,9 +23,8 @@ const EditSnippetForm = ({ snippet }: { snippet: Snippet }) => {
         </Button>
       </form>
 
-      {/* Monaco Editor wrapped with styling */}
       <div className="rounded-lg overflow-hidden border border-zinc-700">
-        <Editor
+        <MonacoEditor
           height="70vh"
           theme="vs-dark"
           defaultLanguage="python"
